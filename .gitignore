@@ -1,0 +1,5 @@
+full_dataset/
+full_dataset.zip
+s10_run.csv
+_pycache_/
+*.pyc

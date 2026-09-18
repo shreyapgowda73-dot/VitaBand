@@ -1,16 +1,16 @@
 import random
 
 def get_heart_rate():
-    return random.randint(60, 100)
+    return random.randint(60, 100) 
 
 def get_temperature():
-    return round(random.uniform(36.5, 37.5), 1)
+    return round(random.uniform(36.5, 372.5), 1)
 
 def get_spo2():
-    return random.randint(95, 100)
+    return random.randint(95, 100)      
 
 heart_rate = get_heart_rate()
-temperature= get_temperature()
+temperature= get_temperature()   
 spo2 = get_spo2()
 
 def check_heart_rate(heart_rate):
@@ -24,8 +24,8 @@ def check_heart_rate(heart_rate):
         print("Advice : Your heart rate is within the healthy range.")
     else:
         print("Status : High Heart Rate")
-        print("Advice : Please sit down, rest, and consult a doctor if it remains high.")
-
+        print("Advice : Please sit down, rest, and consult a doctor if it remains high.")  
+      
 def check_temperature(temperature):
     print(f"\nTemperature : {temperature} °C")
 
@@ -54,7 +54,6 @@ def check_spo2(spo2):
 
 def overall_health_status(heart_rate, temperature, spo2):
     print("\nOverall Health Status")
-
     if heart_rate >= 60 and heart_rate <= 100 and temperature >= 36.5 and temperature <= 37.5 and spo2 >= 95:
         print("All vitals are normal.")
     else:
@@ -74,6 +73,6 @@ while True:
     if choice.lower() == "no":
         print("\nThank you for using VitaBand!")
         print("Stay Healthy ")
-        break
-
-    
+        break  
+ 
+                                                                                                                                                                                                                                                                                                                                            
