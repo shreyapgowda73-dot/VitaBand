@@ -1,18 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# --------------------------------------------------
+
 # 1. Basic simulation settings
-# --------------------------------------------------
 
 duration = 10
 sampling_rate = 50
 
 t = np.arange(0, duration, 1 / sampling_rate)
 
-# --------------------------------------------------
+
 # 2. Simulate normal accelerometer movement
-# --------------------------------------------------
+
 
 ax = np.random.normal(0, 0.5, len(t))
 ay = np.random.normal(0, 0.5, len(t))
@@ -23,9 +22,9 @@ acceleration_magnitude = np.sqrt(
     ax**2 + ay**2 + az**2
 )
 
-# --------------------------------------------------
+
 # 3. Simulate normal gyroscope movement
-# --------------------------------------------------
+
 
 gx = np.random.normal(0, 5, len(t))
 gy = np.random.normal(0, 5, len(t))
@@ -36,9 +35,8 @@ gyro_magnitude = np.sqrt(
     gx**2 + gy**2 + gz**2
 )
 
-# --------------------------------------------------
 # 4. Detect impact
-# --------------------------------------------------
+
 
 impact_threshold = 20
 
@@ -53,9 +51,8 @@ else:
     impact_detected = False
     print("No impact detected.")
 
-# --------------------------------------------------
 # 5. Detect sudden orientation change
-# --------------------------------------------------
+
 
 gyro_threshold = 50
 
@@ -70,9 +67,9 @@ else:
     orientation_detected = False
     print("No significant orientation change detected.")
 
-# --------------------------------------------------
+
 # 6. Check for inactivity
-# --------------------------------------------------
+
 
 inactivity_threshold = 0.2
 
@@ -88,9 +85,8 @@ else:
     inactivity_detected = False
     print("Normal movement detected.")
 
-# --------------------------------------------------
+
 # 7. Final fall decision
-# --------------------------------------------------
 
 if (
     impact_detected
@@ -101,9 +97,9 @@ if (
 else:
     print("No fall detected.")
 
-# --------------------------------------------------
+
 # 8. Plot accelerometer data
-# --------------------------------------------------
+
 
 plt.figure()
 
@@ -119,9 +115,9 @@ plt.grid()
 
 plt.show()
 
-# --------------------------------------------------
+
 # 9. Plot gyroscope data
-# --------------------------------------------------
+
 
 plt.figure()
 
