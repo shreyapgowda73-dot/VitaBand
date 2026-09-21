@@ -1,18 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# --------------------------------------------------
+
 # 1. Basic simulation settings
-# --------------------------------------------------
+
 
 duration = 10
 sampling_rate = 50
 
 t = np.arange(0, duration, 1 / sampling_rate)
 
-# --------------------------------------------------
+
 # 2. Simulate accelerometer data
-# --------------------------------------------------
+
 
 # Normal acceleration due to gravity
 ax = np.zeros(len(t))
@@ -31,9 +31,9 @@ fall_end = int(4 * sampling_rate)
 # Simulate sudden impact
 az[fall_start:fall_end] += 15
 
-# --------------------------------------------------
+
 # 3. Simulate post-fall inactivity
-# --------------------------------------------------
+
 
 inactivity_start = int(4 * sampling_rate)
 
@@ -49,17 +49,17 @@ az[inactivity_start:] = 9.81 + np.random.normal(
     0, 0.05, len(t) - inactivity_start
 )
 
-# --------------------------------------------------
+
 # 4. Calculate total acceleration
-# --------------------------------------------------
+
 
 acceleration_magnitude = np.sqrt(
     ax**2 + ay**2 + az**2
 )
 
-# --------------------------------------------------
+
 # 5. Simulate gyroscope data
-# --------------------------------------------------
+
 
 # Small angular movement during normal activity
 gx = np.random.normal(0, 2, len(t))
@@ -70,17 +70,17 @@ gz = np.random.normal(0, 2, len(t))
 gx[fall_start:fall_end] += 100
 gy[fall_start:fall_end] += 80
 
-# --------------------------------------------------
+
 # 6. Calculate gyroscope magnitude
-# --------------------------------------------------
+
 
 gyro_magnitude = np.sqrt(
     gx**2 + gy**2 + gz**2
 )
 
-# --------------------------------------------------
+
 # 7. Detect sudden impact
-# --------------------------------------------------
+
 
 impact_threshold = 20
 
@@ -95,9 +95,9 @@ else:
     impact_detected = False
     print("No impact detected.")
 
-# --------------------------------------------------
+
 # 8. Detect sudden orientation change
-# --------------------------------------------------
+
 
 gyro_threshold = 50
 
@@ -112,9 +112,9 @@ else:
     orientation_detected = False
     print("No significant orientation change detected.")
 
-# --------------------------------------------------
+
 # 9. Detect post-fall inactivity
-# --------------------------------------------------
+
 
 inactivity_threshold = 0.2
 
@@ -129,9 +129,9 @@ else:
     inactivity_detected = False
     print("Normal movement detected after impact.")
 
-# --------------------------------------------------
+
 # 10. Final fall decision
-# --------------------------------------------------
+
 
 if (
     impact_detected
@@ -142,9 +142,9 @@ if (
 else:
     print("No fall detected.")
 
-# --------------------------------------------------
+
 # 11. Plot accelerometer data
-# --------------------------------------------------
+
 
 plt.figure()
 
@@ -160,9 +160,9 @@ plt.grid()
 
 plt.show()
 
-# --------------------------------------------------
+
 # 12. Plot gyroscope data
-# --------------------------------------------------
+
 
 plt.figure()
 
