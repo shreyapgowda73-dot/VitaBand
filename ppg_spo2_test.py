@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 
 
-# ==========================================
+
 # LOAD REAL PPG DATA
-# ==========================================
+
 
 data = pd.read_csv("s10_run.csv")
 
@@ -22,9 +22,9 @@ print("--------------------------")
 print("Total PPG samples:", len(red))
 
 
-# ==========================================
+
 # SIMPLE MOVING AVERAGE FILTER
-# ==========================================
+
 
 filter_window = 25
 
@@ -41,9 +41,9 @@ ir_smooth = np.convolve(
 )
 
 
-# ==========================================
+
 # SHORT WINDOW ANALYSIS
-# ==========================================
+
 
 window_seconds = 10
 window_samples = window_seconds * sampling_rate
@@ -73,16 +73,16 @@ for i in range(number_of_windows):
     red_smooth_window = red_smooth[start:end]
     ir_smooth_window = ir_smooth[start:end]
 
-    # ======================================
+    
     # DC COMPONENT
-    # ======================================
+    
 
     red_dc = np.mean(red_window)
     ir_dc = np.mean(ir_window)
 
-    # ======================================
+    
     # AC COMPONENT
-    # ======================================
+    
 
     red_ac_signal = (
         red_window - red_smooth_window
@@ -95,9 +95,9 @@ for i in range(number_of_windows):
     red_ac = np.std(red_ac_signal)
     ir_ac = np.std(ir_ac_signal)
 
-    # ======================================
+   
     # SIGNAL QUALITY CHECK
-    # ======================================
+    
 
     minimum_ac = 5
 
@@ -116,9 +116,9 @@ for i in range(number_of_windows):
 
         continue
 
-    # ======================================
+    
     # RATIO OF RATIOS
-    # ======================================
+    
 
     ratio = (
         (red_ac / red_dc)
@@ -151,9 +151,9 @@ for i in range(number_of_windows):
     )
 
 
-# ==========================================
+
 # PPG PROCESSING SUMMARY
-# ==========================================
+
 
 print()
 print("--------------------------")
@@ -195,9 +195,9 @@ if len(valid_ratios) > 0:
     )
 
 
-# ==========================================
+
 # REFERENCE SpO2
-# ==========================================
+
 
 reference_spo2_start = 96
 reference_spo2_end = 97
