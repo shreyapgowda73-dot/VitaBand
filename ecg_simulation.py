@@ -46,9 +46,9 @@ for beat_start in np.arange(0, duration, beat_interval):
 
 
 
-# -----------------------------
+
 # Add Realistic Noise
-# -----------------------------
+
 
 # Small random electrical noise
 random_noise = np.random.normal(0, 0.03, len(t))
@@ -68,9 +68,8 @@ motion_artifact[motion_start:motion_end] = (
 
 # Combine the noise components
 ecg = ecg + random_noise + baseline_wander + motion_artifact
-# -----------------------------
+
 # ECG Filtering
-# -----------------------------
 
 window_size = 5
 
@@ -79,9 +78,9 @@ filtered_ecg = np.convolve(
     np.ones(window_size) / window_size,
     mode="same"
 )
-# -----------------------------
+
 # R-Peak Detection
-# -----------------------------
+
 
 r_peaks = []
 
@@ -98,9 +97,9 @@ for i in range(1, len(filtered_ecg) - 1):
                 r_peaks.append(i)
 
 
-# -----------------------------
+
 # Calculate Heart Rate
-# -----------------------------
+
 
 if len(r_peaks) > 1:
 
@@ -120,9 +119,9 @@ print("Calculated Heart Rate:",
       round(calculated_heart_rate, 2), "BPM")
 
 
-# -----------------------------
+
 # Display ECG with R-peaks
-# -----------------------------
+
 
 plt.figure(figsize=(12, 4))
 
