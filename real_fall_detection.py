@@ -10,9 +10,8 @@ data.columns = ["time", "x", "y", "z", "a", "sensor"]
 print("VitaBand Real Fall Analysis")
 print("---------------------------")
 
-# -----------------------------
+
 # Accelerometer data
-# -----------------------------
 acc_data = data[data["sensor"] == "acc"].copy()
 
 ax = acc_data["x"].astype(float).values
@@ -23,9 +22,9 @@ acceleration_magnitude = np.sqrt(
     ax**2 + ay**2 + az**2
 )
 
-# -----------------------------
+
 # Gyroscope data
-# -----------------------------
+
 gyro_data = data[data["sensor"] == "gyro"].copy()
 
 gx = gyro_data["x"].astype(float).values
@@ -36,9 +35,9 @@ gyro_magnitude = np.sqrt(
     gx**2 + gy**2 + gz**2
 )
 
-# -----------------------------
+
 # Impact detection
-# -----------------------------
+
 impact_threshold = 20
 
 impact_indices = np.where(
@@ -74,9 +73,8 @@ else:
 
     print("No significant impact detected.")
 
-# -----------------------------
 # Gyroscope analysis
-# -----------------------------
+
 gyro_threshold = 2
 
 if len(gyro_magnitude) > 0:
@@ -105,9 +103,8 @@ else:
     print()
     print("No gyroscope data available.")
 
-# -----------------------------
+
 # Post-impact inactivity
-# -----------------------------
 if impact_detected:
 
     post_start = impact_index + 1
@@ -171,10 +168,8 @@ else:
 
     inactivity_detected = False
     print("Inactivity check skipped because no impact was detected.")
-
-# -----------------------------
 # Final fall decision
-# -----------------------------
+
 if (
     impact_detected
     and orientation_detected
